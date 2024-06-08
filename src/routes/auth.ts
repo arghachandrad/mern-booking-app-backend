@@ -46,7 +46,8 @@ router.post(
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: 86400000,
-        sameSite: "none",
+        // sameSite: "none",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       });
       res.status(200).json({ userId: user._id });
     } catch (error) {
@@ -64,7 +65,8 @@ router.post("/logout", (req: Request, res: Response) => {
   res.cookie("auth_token", "", {
     expires: new Date(0),
     secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
+    // sameSite: "none",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
   });
   res.send();
 });
