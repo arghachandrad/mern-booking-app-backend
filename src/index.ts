@@ -21,11 +21,7 @@ import cookieParser from "cookie-parser";
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
 
 const app = express();
-app.use(
-  cookieParser({
-    origin: "https://mern-booking-app-frontend-ten.vercel.app",
-  })
-);
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
