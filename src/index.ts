@@ -21,7 +21,11 @@ import cookieParser from "cookie-parser";
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
 
 const app = express();
-app.use(cookieParser());
+app.use(
+  cookieParser({
+    origin: process.env.FRONTEND_URL,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
