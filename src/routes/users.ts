@@ -61,10 +61,6 @@ router.post(
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: 86400000,
-        domain:
-          process.env.NODE_ENV === "production"
-            ? "https://mern-booking-app-frontend-ten.vercel.app"
-            : "http://localhost:3000",
       });
       return res.status(200).send({ message: "User registered OK" });
     } catch (error) {
