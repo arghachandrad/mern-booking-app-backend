@@ -46,7 +46,7 @@ router.post(
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: 86400000,
-        origin: process.env.FRONTEND_URL,
+        domain: process.env.FRONTEND_URL,
       });
       res.status(200).json({ userId: user._id });
     } catch (error) {
